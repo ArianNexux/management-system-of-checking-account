@@ -83,7 +83,7 @@ describe('Test suit for Instituition Entity', () => {
     expect(instituition.sizeLogo).toBe(sizeLogo);
   });
 
-  it('should throw an error when one of the fields is empty', () => {
+  it('should throw an error when Name is empty', () => {
     const institutionProps = {
       id: new Id(),
       name: '',
@@ -97,5 +97,68 @@ describe('Test suit for Instituition Entity', () => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const instituition = new Instituition(institutionProps);
     }).toThrowError('Name is empty');
+  });
+
+  it('should throw an error when title1 is empty', () => {
+    const institutionProps = {
+      id: new Id(),
+      name: 'bsj',
+      title1: '',
+      title2: 't2',
+      logo: 'img.png',
+      sizeLogo: new SizeLogo(120, 120),
+    };
+
+    expect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const instituition = new Instituition(institutionProps);
+    }).toThrowError('Title 1 is empty');
+  });
+
+  it('should throw an error when title2 is empty', () => {
+    const institutionProps = {
+      id: new Id(),
+      name: 'bsj',
+      title1: 't1',
+      title2: '',
+      logo: 'img.png',
+      sizeLogo: new SizeLogo(120, 120),
+    };
+
+    expect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const instituition = new Instituition(institutionProps);
+    }).toThrowError('Title 2 is empty');
+  });
+  it('should throw an error when logo is empty', () => {
+    const institutionProps = {
+      id: new Id(),
+      name: 'bsj',
+      title1: 't1',
+      title2: 't2',
+      logo: '',
+      sizeLogo: new SizeLogo(120, 120),
+    };
+
+    expect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const instituition = new Instituition(institutionProps);
+    }).toThrowError('Logo is empty');
+  });
+
+  it('should throw an error when Size Logo is empty', () => {
+    const institutionProps = {
+      id: new Id(),
+      name: 'bsj',
+      title1: 't1',
+      title2: 't2',
+      logo: 'img.png',
+      sizeLogo: undefined,
+    };
+
+    expect(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const instituition = new Instituition(institutionProps);
+    }).toThrowError('SizeLogo is empty');
   });
 });

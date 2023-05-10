@@ -31,11 +31,11 @@ export default class Instituition extends BaseEntity implements AggregateRoot {
 
   validate() {
     if (this._title1 == '') {
-      throw new Error('Titulo 1 is empty');
+      throw new Error('Title 1 is empty');
     }
 
     if (this._title2 == '') {
-      throw new Error('Titulo 2 is empty');
+      throw new Error('Title 2 is empty');
     }
 
     if (this._name == '') {
@@ -43,7 +43,7 @@ export default class Instituition extends BaseEntity implements AggregateRoot {
     }
 
     if (this._logo == '') {
-      throw new Error('logo is empty');
+      throw new Error('Logo is empty');
     }
 
     if (!this._sizeLogo) {
