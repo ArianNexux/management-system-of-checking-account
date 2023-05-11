@@ -30,75 +30,77 @@ describe('Test suits for Employeers entity', () => {
   });
 
   it('should throw an error when name is not provided', () => {
-    const props = {
-      id: new Id(),
-      name: null,
-      email: new Email('bentojulio2022@gmail.com'),
-      photo: 'img.png',
-      role: 'Administrator',
-      position: 'FullCycle Developer',
-    };
     expect(() => {
+      const props = {
+        id: new Id(),
+        name: new Name('Bento'),
+        email: new Email('bentojulio2022@gmail.com'),
+        photo: 'img.png',
+        role: 'Administrator',
+        position: 'FullCycle Developer',
+      };
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const employee = new Employee(props);
     }).toThrowError('Please provide a valid name');
   });
 
   it('should throw an error when email valid is not provided', () => {
-    const props = {
-      id: new Id(),
-      name: new Name('Bento Julio'),
-      email: new Email('bentojulio2022gmail.com'),
-      photo: 'img.png',
-      role: 'Administrator',
-      position: 'FullCycle Developer',
-    };
     expect(() => {
+      const props = {
+        id: new Id(),
+        name: new Name('Bento Julio'),
+        email: new Email('bentojulio2022gmail.com'),
+        photo: 'img.png',
+        role: 'Administrator',
+        position: 'FullCycle Developer',
+      };
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const employee = new Employee(props);
     }).toThrowError('Please provide a valid email address');
   });
 
   it('should throw an error when photo is not provided', () => {
-    const props = {
-      id: new Id(),
-      name: new Name('Bento Julio'),
-      email: new Email('bentojulio2022@gmail.com'),
-      photo: '',
-      role: 'Administrator',
-      position: 'FullCycle Developer',
-    };
     expect(() => {
+      const props = {
+        id: new Id(),
+        name: new Name('Bento Julio'),
+        email: new Email('bentojulio2022@gmail.com'),
+        photo: '',
+        role: 'Administrator',
+        position: 'FullCycle Developer',
+      };
+
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const employee = new Employee(props);
     }).toThrowError('Please provide a photo');
   });
 
   it('should throw an error when role is not provided', () => {
-    const props = {
-      id: new Id(),
-      name: new Name('Bento Julio'),
-      email: new Email('bentojulio2022@gmail.com'),
-      photo: 'img.png',
-      role: '',
-      position: 'FullCycle Developer',
-    };
     expect(() => {
+      const props = {
+        id: new Id(),
+        name: new Name('Bento Julio'),
+        email: new Email('bentojulio2022@gmail.com'),
+        photo: 'img.png',
+        role: '',
+        position: 'FullCycle Developer',
+      };
+
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const employee = new Employee(props);
     }).toThrowError('Please provide a role');
   });
 
   it('should throw an error when position is not provided', () => {
-    const props = {
-      id: new Id(),
-      name: new Name('Bento Julio'),
-      email: new Email('bentojulio2022@gmail.com'),
-      photo: 'img.png',
-      role: 'Administrator',
-      position: '',
-    };
     expect(() => {
+      const props = {
+        id: new Id(),
+        name: new Name('Bento Julio'),
+        email: new Email('bentojulio2022@gmail.com'),
+        photo: 'img.png',
+        role: 'Administrator',
+        position: '',
+      };
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const employee = new Employee(props);
     }).toThrowError('Please provide a position');

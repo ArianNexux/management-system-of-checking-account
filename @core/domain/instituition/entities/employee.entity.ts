@@ -68,13 +68,6 @@ export default class Employee extends BaseEntity {
   }
 
   validate() {
-    if (!this._name) {
-      throw new Error('Please provide a valid name');
-    }
-    if (!this._email || !this._email.email.includes('@')) {
-      throw new Error('Please provide a valid email address');
-    }
-
     if (this._photo == '') {
       throw new Error('Please provide a photo');
     }
