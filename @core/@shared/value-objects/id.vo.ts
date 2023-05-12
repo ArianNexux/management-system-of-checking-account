@@ -8,6 +8,6 @@ export default class Id {
   }
 
   get id(): string {
-    return this.id;
+    return this._id;
   }
 }
