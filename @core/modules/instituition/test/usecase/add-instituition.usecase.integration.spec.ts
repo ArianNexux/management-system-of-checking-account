@@ -1,5 +1,5 @@
-import AddInstituitionUseCase from "./add-instituition.usecase";
-import InstituitionPrismaRepository from "../repository/prisma/instituition.repository";
+import AddInstituitionUseCase from "../../usecase/add-instituition.usecase";
+import InstituitionPrismaRepository from "../../repository/prisma/instituition.repository";
 
 describe('Test suits of use case to create institution', () => {
 

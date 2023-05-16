@@ -1,7 +1,7 @@
 import Id from '../../../@shared/domain/value-objects/id.vo'
 import Instituition from '../../domain/instituition.entity'
 import { PrismaClient } from '@prisma/client'
-import InstituitionPrismaRepository from './instituition.repository'
+import InstituitionPrismaRepository from '../../repository/prisma/instituition.repository'
 import SizeLogo from '../../../@shared/domain/value-objects/size-logo.vo'
 
 describe("Test suits for repository instituition", () => {

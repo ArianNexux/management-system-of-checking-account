@@ -1,6 +1,6 @@
-import SizeLogo from '../../@shared/domain/value-objects/size-logo.vo';
-import Instituition from './instituition.entity';
-import Id from '../../@shared/domain/value-objects/id.vo';
+import SizeLogo from '../../../@shared/domain/value-objects/size-logo.vo';
+import Instituition from '../../domain/instituition.entity';
+import Id from '../../../@shared/domain/value-objects/id.vo';
 
 describe('Test suit for Instituition Entity', () => {
   it('should change name of Institution', () => {
