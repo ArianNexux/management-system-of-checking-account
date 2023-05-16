@@ -1,7 +1,7 @@
 
-import AddInstituitionUseCase from "../../usecase/add-instituition.usecase";
+import AddEmployeeUseCase from "../../usecase/add-employee.usecase";
 
-describe('Test suits of use case to create institution', () => {
+describe('Test suits of use case to create employer', () => {
 
     const MockRepository = () => {
         return {
@@ -9,21 +9,20 @@ describe('Test suits of use case to create institution', () => {
             find: jest.fn(),
             update: jest.fn(),
             list: jest.fn(),
-
+            delete: jest.fn()
         }
     }
-    test('should create an instituition', async () => {
+    test('should create an employer', async () => {
         const repository = MockRepository()
 
-        const usecase = new AddInstituitionUseCase(repository);
+        const usecase = new AddEmployeeUseCase(repository);
 
         const input = {
-            name: 'bsj',
-            title1: 't1',
-            title2: 't2',
-            logo: 'img.png',
-            heightLogo: 120,
-            widthLogo: 120
+            name: 'Bento Julio',
+            email: 'bentojulio@email.com',
+            role: 'role',
+            photo: 'img.png',
+            position: "position"
         };
 
         const output = await usecase.execute(input)
@@ -31,12 +30,9 @@ describe('Test suits of use case to create institution', () => {
         expect(repository.add).toHaveBeenCalled()
         expect(output.id).toBeDefined();
         expect(output.name).toBe(input.name);
-        expect(output.logo).toBe(input.logo);
-        expect(output.title1).toBe(input.title1);
-        expect(output.title2).toBe(input.title2);
-        expect(output.logo).toBe(input.logo);
-        expect(output.heightLogo).toBe(input.heightLogo);
-        expect(output.widthLogo).toBe(input.widthLogo);
+        expect(output.role).toBe(input.role);
+        expect(output.email).toBe(input.email);
+        expect(output.position).toBe(input.position);
 
     });
 });
