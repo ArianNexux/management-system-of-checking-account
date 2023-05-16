@@ -1,7 +1,7 @@
-import Id from "../../../@shared/value-objects/id.vo";
-import Instituition from "../entities/instituition.entity";
-import SizeLogo from "../../../@shared/value-objects/size-logo.vo";
-import FindInstituitionUseCase from "./find-instituition.usecase";
+import Id from "../../../@shared/domain/value-objects/id.vo";
+import Instituition from "../../domain/instituition.entity";
+import SizeLogo from "../../../@shared/domain/value-objects/size-logo.vo";
+import FindInstituitionUseCase from "../../usecase/find-instituition.usecase";
 
 describe('Test suits Find Instituition Use Case', () => {
     const propsInstituition = {

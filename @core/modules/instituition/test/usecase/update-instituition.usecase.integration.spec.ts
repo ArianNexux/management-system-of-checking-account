@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import InstituitionPrismaRepository from "../../../infra/db/prisma/instituition.repository";
-import UpdateInstituitionUseCase from "./update-instituition.usecase"
-import Id from "../../../@shared/value-objects/id.vo";
+import InstituitionPrismaRepository from "../../repository/prisma/instituition.repository";
+import UpdateInstituitionUseCase from "../../usecase/update-instituition.usecase"
+import Id from "../../../@shared/domain/value-objects/id.vo";
 
 describe("Test suit to update instituition", () => {
 

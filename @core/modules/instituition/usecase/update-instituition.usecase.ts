@@ -1,7 +1,7 @@
-import Id from "../../../@shared/value-objects/id.vo";
-import SizeLogo from "../../../@shared/value-objects/size-logo.vo";
+import Id from "../../@shared/domain/value-objects/id.vo";
+import SizeLogo from "../../@shared/domain/value-objects/size-logo.vo";
 import InstituitionGateway from "../gateway/instituition.gateway";
-import Instituition from "../entities/instituition.entity";
+import Instituition from "../domain/instituition.entity";
 
 export default class UpdateInstituitionUseCase {
     constructor(

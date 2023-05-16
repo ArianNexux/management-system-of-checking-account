@@ -1,4 +1,4 @@
-import { FindInstituitionInputDTO, FindInstituitionOutputDTO } from "../../../@shared/dtos/find-instituition.dto";
+import { FindInstituitionInputDTO, FindInstituitionOutputDTO } from "../../@shared/dtos/find-instituition.dto";
 import InstituitionGateway from "../gateway/instituition.gateway";
 
 export default class FindInstituitionUseCase {

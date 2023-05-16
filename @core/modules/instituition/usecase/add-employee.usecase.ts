@@ -1,9 +1,9 @@
-import Id from "../../../@shared/value-objects/id.vo";
-import { AddEmployeeInputDTO, AddEmployeeOutputDTO } from "../../../@shared/dtos/add-employee.dto";
-import EmployeeGateway from "../gateway/employee.gateway";
-import Employee from "../entities/employee.entity";
-import Name from "../../../@shared/value-objects/name.vo";
-import Email from "../../../@shared/value-objects/email.vo";
+import Id from "../../@shared/domain/value-objects/id.vo";
+import { AddEmployeeInputDTO, AddEmployeeOutputDTO } from "../../@shared/dtos/add-employee.dto";
+import EmployeeGateway from "../../../modules/instituition/gateway/employee.gateway";
+import Employee from "../test/domain/employee.entity";
+import Name from "../../@shared/domain/value-objects/name.vo";
+import Email from "../../@shared/domain/value-objects/email.vo";
 
 export default class AddEmployeeUseCase {
 

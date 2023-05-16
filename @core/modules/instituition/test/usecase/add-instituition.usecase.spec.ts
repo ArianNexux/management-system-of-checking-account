@@ -1,5 +1,6 @@
-
-import AddInstituitionUseCase from "./add-instituition.usecase";
+import Id from "../../../@shared/domain/value-objects/id.vo";
+import SizeLogo from "../../../@shared/domain/value-objects/size-logo.vo";
+import AddInstituitionUseCase from "../../usecase/add-instituition.usecase";
 
 describe('Test suits of use case to create institution', () => {
 
@@ -8,8 +9,7 @@ describe('Test suits of use case to create institution', () => {
             add: jest.fn(),
             find: jest.fn(),
             update: jest.fn(),
-            list: jest.fn(),
-
+            list: jest.fn()
         }
     }
     test('should create an instituition', async () => {

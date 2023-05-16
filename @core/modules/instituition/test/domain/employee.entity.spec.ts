@@ -1,7 +1,7 @@
-import Email from '../../../@shared/value-objects/email.vo';
-import Id from '../../../@shared/value-objects/id.vo';
-import Name from '../../../@shared/value-objects/name.vo';
-import Employee from './employee.entity';
+import Email from '../../../@shared/domain/value-objects/email.vo';
+import Id from '../../../@shared/domain/value-objects/id.vo';
+import Name from '../../../@shared/domain/value-objects/name.vo';
+import Employee from '../../domain/employee.entity';
 
 describe('Test suits for Employeers entity', () => {
   it('should change the fields of the employee', () => {

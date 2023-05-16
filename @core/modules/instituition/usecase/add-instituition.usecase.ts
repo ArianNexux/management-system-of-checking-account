@@ -1,8 +1,8 @@
-import Id from "../../../@shared/value-objects/id.vo";
-import SizeLogo from "../../../@shared/value-objects/size-logo.vo";
-import Instituition from "../entities/instituition.entity";
+import Id from "../../@shared/domain/value-objects/id.vo";
+import SizeLogo from "../../@shared/domain/value-objects/size-logo.vo";
+import Instituition from "../domain/instituition.entity";
 import InstituitionGateway from "../gateway/instituition.gateway";
-import { AddInstituitionInputDTO, AddInstituitionOutputDTO } from "../../../@shared/dtos/add-instituition.dto";
+import { AddInstituitionInputDTO, AddInstituitionOutputDTO } from "../../@shared/dtos/add-instituition.dto";
 
 export default class AddEmployeeUseCase {
 

@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
-import Instituition from "../../../domain/instituition/entities/instituition.entity";
-import InstituitionGateway from "../../../domain/instituition/gateway/instituition.gateway";
-import Id from "../../../@shared/value-objects/id.vo";
-import SizeLogo from "../../../@shared/value-objects/size-logo.vo";
+import Instituition from "../../domain/instituition.entity";
+import InstituitionGateway from "../../gateway/instituition.gateway";
+import Id from "../../../@shared/domain/value-objects/id.vo";
+import SizeLogo from "../../../@shared/domain/value-objects/size-logo.vo";
 
 export default class InstituitionPrismaRepository implements InstituitionGateway {
     private prisma: PrismaClient

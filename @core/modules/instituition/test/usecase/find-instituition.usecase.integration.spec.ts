@@ -1,8 +1,6 @@
-import Id from "../../../@shared/value-objects/id.vo";
-import Instituition from "../entities/instituition.entity";
-import SizeLogo from "../../../@shared/value-objects/size-logo.vo";
-import FindInstituitionUseCase from "./find-instituition.usecase";
-import InstituitionPrismaRepository from "../../../infra/db/prisma/instituition.repository";
+import Id from "../../../@shared/domain/value-objects/id.vo";
+import FindInstituitionUseCase from "../../usecase/find-instituition.usecase";
+import InstituitionPrismaRepository from "../../repository/prisma/instituition.repository";
 import { PrismaClient } from "@prisma/client";
 
 describe('Test suits Find Instituition Use Case', () => {

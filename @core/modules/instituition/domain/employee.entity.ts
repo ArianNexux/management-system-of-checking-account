@@ -1,7 +1,7 @@
-import BaseEntity from '../../../@shared/entity/base-entity';
-import Email from '../../../@shared/value-objects/email.vo';
-import Id from '../../../@shared/value-objects/id.vo';
-import Name from '../../../@shared/value-objects/name.vo';
+import BaseEntity from '../../@shared/domain/entity/base-entity';
+import Email from '../../@shared/domain/value-objects/email.vo';
+import Id from '../../@shared/domain/value-objects/id.vo';
+import Name from '../../@shared/domain/value-objects/name.vo';
 
 type EmployeeProps = {
   id: Id;

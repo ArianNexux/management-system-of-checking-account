@@ -1,19 +1,10 @@
-import Id from "@core/@shared/value-objects/id.vo";
-import SizeLogo from "@core/@shared/value-objects/size-logo.vo";
 import AddInstituitionUseCase from "./add-instituition.usecase";
+import InstituitionPrismaRepository from "../repository/prisma/instituition.repository";
 
 describe('Test suits of use case to create institution', () => {
 
-    const MockRepository = () => {
-        return {
-            add: jest.fn(),
-            find: jest.fn(),
-            update: jest.fn(),
-            list: jest.fn()
-        }
-    }
     test('should create an instituition', async () => {
-        const repository = MockRepository()
+        const repository = new InstituitionPrismaRepository()
 
         const usecase = new AddInstituitionUseCase(repository);
 
@@ -28,7 +19,6 @@ describe('Test suits of use case to create institution', () => {
 
         const output = await usecase.execute(input)
 
-        expect(repository.add).toHaveBeenCalled()
         expect(output.id).toBeDefined();
         expect(output.name).toBe(input.name);
         expect(output.logo).toBe(input.logo);

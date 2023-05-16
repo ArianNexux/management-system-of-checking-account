@@ -1,4 +1,4 @@
-import UpdateInstituitionUseCase from "./update-instituition.usecase"
+import UpdateInstituitionUseCase from "../../usecase/update-instituition.usecase"
 
 describe("Test suit to update instituition", () => {
 

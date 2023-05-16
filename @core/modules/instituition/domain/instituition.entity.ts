@@ -1,7 +1,7 @@
-import AggregateRoot from '../../../@shared/entity/aggregate.root-interface';
-import BaseEntity from '../../../@shared/entity/base-entity';
-import Id from '../../../@shared/value-objects/id.vo';
-import SizeLogo from '../../../@shared/value-objects/size-logo.vo';
+import AggregateRoot from '../../@shared/domain/entity/aggregate.root-interface';
+import BaseEntity from '../../@shared/domain/entity/base-entity';
+import Id from '../../@shared/domain/value-objects/id.vo';
+import SizeLogo from '../../@shared/domain/value-objects/size-logo.vo';
 
 type InstituitionProps = {
   id: Id;
