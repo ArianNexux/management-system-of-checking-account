@@ -1,6 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import Instituition from "../../../domain/instituition/entities/instituition.entity";
 import InstituitionGateway from "../../../domain/instituition/gateway/instituition.gateway";
+import Id from "../../../@shared/value-objects/id.vo";
+import SizeLogo from "../../../@shared/value-objects/size-logo.vo";
 
 export default class InstituitionPrismaRepository implements InstituitionGateway {
     private prisma: PrismaClient
@@ -26,11 +28,40 @@ export default class InstituitionPrismaRepository implements InstituitionGateway
         })
 
     }
-    update(entity: Instituition): Promise<void> {
-        throw new Error("Method not implemented.");
+    async update(entity: Instituition): Promise<void> {
+        await this.prisma.instituition.update({
+            data: {
+                name: entity.name,
+                logo: entity.logo,
+                heightLogo: entity.sizeLogo.height.toString(),
+                widthLogo: entity.sizeLogo.width.toString(),
+                title1: entity.title1,
+                title2: entity.title2
+            },
+            where: {
+                id: entity.id.id
+            }
+        })
     }
-    find(id: string): Promise<Instituition> {
-        throw new Error("Method not implemented.");
+    async find(id: string): Promise<Instituition> {
+        const response = await this.prisma.instituition.findFirst({
+            where: { id }
+        })
+
+        let instituitionProps = {
+            id: new Id(id),
+            name: response.name,
+            logo: response.logo,
+            sizeLogo: new SizeLogo(parseInt(response.heightLogo), parseInt(response.widthLogo)),
+            title1: response.title1,
+            title2: response.title2
+        }
+
+
+        const instituition = new Instituition(instituitionProps)
+
+
+        return instituition
     }
 
 }
