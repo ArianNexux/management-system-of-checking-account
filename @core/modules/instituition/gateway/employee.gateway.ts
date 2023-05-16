@@ -1,4 +1,4 @@
-import Employee from "../entities/employee.entity";
+import Employee from "../domain/employee.entity";
 
 type ListEmployeeInputDTO = {
     limit: number;
