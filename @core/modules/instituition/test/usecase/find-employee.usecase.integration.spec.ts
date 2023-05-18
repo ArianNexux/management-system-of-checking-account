@@ -4,35 +4,40 @@ import Name from "../../../@shared/domain/value-objects/name.vo";
 import Email from "../../../@shared/domain/value-objects/email.vo";
 import FindEmployeeUseCase from "../../usecase/find-employee.usecase";
 import { faker } from '@faker-js/faker';
+import EmployeeRepository from "../../repository/prisma/employee.repository";
+import { PrismaClient } from "@prisma/client";
 
 describe('Test suits Find Employee Use Case', () => {
-    const propsEmployee = {
-        id: new Id(),
-        name: new Name("Bento Julio"),
-        email: new Email(faker.internet.email()),
-        role: 'role',
-        photo: 'img.png',
-        position: "position"
-    };
-    const employeeReturned = new Employee(propsEmployee)
-    const MockRepository = () => {
-        return {
-            add: jest.fn(),
-            find: jest.fn().mockReturnValue(Promise.resolve(employeeReturned)),
-            update: jest.fn(),
-            list: jest.fn(),
-            delete: jest.fn()
-        }
-    }
+    const prisma = new PrismaClient()
+
     test('should find an employee', async () => {
-        const repository = MockRepository()
+        const propsEmployee = {
+            id: new Id(),
+            name: new Name(faker.person.fullName()),
+            email: new Email(faker.internet.email()),
+            role: 'role',
+            photo: 'img.png',
+            position: "position"
+        };
+        const employee = new Employee(propsEmployee)
+        await prisma.employee.create({
+            data: {
+                id: employee.id.id,
+                name: employee.name.name,
+                email: employee.email.email,
+                role: employee.role,
+                position: employee.position,
+                photo: employee.photo
+            }
+        })
+
+        const repository = new EmployeeRepository()
         const input = {
-            id: "123"
+            id: employee.id.id
         }
         const usecase = new FindEmployeeUseCase(repository)
         const output = await usecase.execute(input)
 
-        expect(repository.find).toHaveBeenCalled()
         expect(output.id).toBeDefined()
         expect(output.name).toBe(propsEmployee.name.name)
         expect(output.email).toBe(propsEmployee.email.email)
