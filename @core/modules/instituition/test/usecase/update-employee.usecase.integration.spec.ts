@@ -39,7 +39,7 @@ describe("Test suit to update Employee", () => {
         const inputUpdated = {
             id: fakerUuid,
             name: 'Bento Julio',
-            email: 'bentojulio@gmail.com',
+            email: faker.internet.email(),
             role: 'role',
             photo: 'img.png',
             position: "position",
