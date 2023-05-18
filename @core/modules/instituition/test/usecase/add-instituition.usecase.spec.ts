@@ -1,5 +1,4 @@
-import Id from "../../../@shared/domain/value-objects/id.vo";
-import SizeLogo from "../../../@shared/domain/value-objects/size-logo.vo";
+
 import AddInstituitionUseCase from "../../usecase/add-instituition.usecase";
 
 describe('Test suits of use case to create institution', () => {
