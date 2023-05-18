@@ -12,7 +12,7 @@ describe("Test suit to update Employee", () => {
         }
     }
 
-    test('should update an instituition', async () => {
+    test('should update an Employee', async () => {
         const repository = MockRepository()
 
         const usecase = new UpdateEmployeeUseCase(repository);
