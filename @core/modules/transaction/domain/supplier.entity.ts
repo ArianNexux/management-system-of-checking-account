@@ -14,7 +14,7 @@ type SupplierProps = {
     address: string;
     manager: string;
 };
-export default class Suppplier extends BaseEntity {
+export default class Supplier extends BaseEntity {
     private _name: Name;
     private _email: Email;
     private _code: string;
