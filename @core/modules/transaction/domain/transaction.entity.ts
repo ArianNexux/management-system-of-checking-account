@@ -4,11 +4,14 @@ import Id from '../../@shared/domain/value-objects/id.vo';
 import Name from '../../@shared/domain/value-objects/name.vo';
 import Expenditure from './expenditure.entity';
 import Supplier from './supplier.entity';
-
+enum TypeOfTransaction {
+    Credit = 'Credit',
+    Debit = 'Debit'
+}
 type TransactionProps = {
     id: Id;
     expenditure: Expenditure;
-    type: string;
+    type: TypeOfTransaction;
     amount: number;
     balance_after: number;
     supplier: Supplier;
