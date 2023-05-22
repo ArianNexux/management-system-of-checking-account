@@ -1,13 +1,10 @@
+import { TypeOfTransaction } from '../../@shared/domain/enums/type.transaction.enum';
 import BaseEntity from '../../@shared/domain/entity/base-entity';
-import Email from '../../@shared/domain/value-objects/email.vo';
 import Id from '../../@shared/domain/value-objects/id.vo';
-import Name from '../../@shared/domain/value-objects/name.vo';
 import Expenditure from './expenditure.entity';
 import Supplier from './supplier.entity';
-enum TypeOfTransaction {
-    Credit = 'Credit',
-    Debit = 'Debit'
-}
+
+
 type TransactionProps = {
     id: Id;
     expenditure: Expenditure;
@@ -22,7 +19,7 @@ type TransactionProps = {
 };
 export default class Transaction extends BaseEntity {
     private _expenditure: Expenditure;
-    private _type: string;
+    private _type: TypeOfTransaction;
     private _amount: number;
     private _balance_after: number;
     private _supplier: Supplier;
@@ -41,6 +38,7 @@ export default class Transaction extends BaseEntity {
         this._reference = props.reference;
         this._date_of = props.date_of;
         this._description = props.description;
+        this._ticket = props.ticket;
         this.validate();
     }
 
@@ -80,7 +78,7 @@ export default class Transaction extends BaseEntity {
         return this._description;
     }
 
-    changeType(type: string): void {
+    changeType(type: TypeOfTransaction): void {
         this._type = type;
     }
 
@@ -126,8 +124,8 @@ export default class Transaction extends BaseEntity {
             throw new Error('Please provide a expenditure');
         }
 
-        if (this._type == "") {
-            throw new Error('Please provide a type of transaction');
+        if (!this._type) {
+            throw new Error('Please provide a valid type of transaction');
         }
 
         if (this._description == "") {
