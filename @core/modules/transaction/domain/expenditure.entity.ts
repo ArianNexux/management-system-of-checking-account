@@ -36,7 +36,7 @@ export default class Expenditure extends BaseEntity {
 
     validate() {
         if (this._name == '') {
-            throw new Error('Please provide a name');
+            throw new Error('Please provide a name for the expenditure');
         }
 
         if (this._type == '') {
