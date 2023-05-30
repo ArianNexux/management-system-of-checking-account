@@ -30,8 +30,8 @@ describe('Test suits for Supplierrs entity', () => {
     supplier.updateManager(newManager);
     supplier.updatePhone(newTelephone);
     supplier.updateSupplierNature("Product");
-    expect(supplier.name.name).toBe(newName.name);
-    expect(supplier.email.email).toBe(newEmail.email);
+    expect(supplier.name.value).toBe(newname.value);
+    expect(supplier.email.value).toBe(newemail.value);
     expect(supplier.code).toBe(newCode);
     expect(supplier.telephone).toBe(newTelephone);
     expect(supplier.manager).toBe(newManager);
