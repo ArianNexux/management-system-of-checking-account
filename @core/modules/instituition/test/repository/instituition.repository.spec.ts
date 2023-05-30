@@ -25,10 +25,10 @@ describe("Test suits for repository instituition", () => {
 
         const instituitionFound = await prisma.instituition.findFirst({
             where: {
-                id: institutionProps.id.id
+                id: institutionProps.id.value
             }
         })
-        expect(instituitionFound.id).toBe(instituition.id.id)
+        expect(instituitionFound.id).toBe(instituition.id.value)
         expect(instituitionFound.name).toBe(instituition.name)
         expect(instituitionFound.logo).toBe(instituition.logo)
         expect(instituitionFound.title1).toBe(instituition.title1)
@@ -51,7 +51,7 @@ describe("Test suits for repository instituition", () => {
 
         await prisma.instituition.create({
             data: {
-                id: instituitionToUpdate.id.id,
+                id: instituitionToUpdate.id.value,
                 name: instituitionToUpdate.name,
                 logo: instituitionToUpdate.logo,
                 heightLogo: instituitionToUpdate.sizeLogo.height.toString(),
@@ -69,10 +69,10 @@ describe("Test suits for repository instituition", () => {
 
         const instituitionFound = await prisma.instituition.findFirst({
             where: {
-                id: institutionProps.id.id
+                id: institutionProps.id.value
             }
         })
-        expect(instituitionFound.id).toBe(instituitionToUpdate.id.id)
+        expect(instituitionFound.id).toBe(instituitionToUpdate.id.value)
         expect(instituitionFound.name).toBe(instituitionToUpdate.name)
         expect(instituitionFound.logo).toBe(instituitionToUpdate.logo)
         expect(instituitionFound.title1).toBe(instituitionToUpdate.title1)
@@ -96,7 +96,7 @@ describe("Test suits for repository instituition", () => {
 
         await prisma.instituition.create({
             data: {
-                id: instituition.id.id,
+                id: instituition.id.value,
                 name: instituition.name,
                 logo: instituition.logo,
                 heightLogo: instituition.sizeLogo.height.toString(),
@@ -106,9 +106,9 @@ describe("Test suits for repository instituition", () => {
             }
         })
 
-        let instituitionFound = await repository.find(instituition.id.id)
+        let instituitionFound = await repository.find(instituition.id.value)
 
-        expect(instituitionFound.id.id).toBe(instituition.id.id)
+        expect(instituitionFound.id.value).toBe(instituition.id.value)
         expect(instituitionFound.name).toBe(instituition.name)
         expect(instituitionFound.logo).toBe(instituition.logo)
         expect(instituitionFound.title1).toBe(instituition.title1)
