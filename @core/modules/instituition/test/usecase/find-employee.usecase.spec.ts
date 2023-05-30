@@ -34,8 +34,8 @@ describe('Test suits Find Employee Use Case', () => {
 
         expect(repository.find).toHaveBeenCalled()
         expect(output.id).toBeDefined()
-        expect(output.name).toBe(propsEmployee.name.name)
-        expect(output.email).toBe(propsEmployee.email.email)
+        expect(output.name).toBe(propsEmployee.name.value)
+        expect(output.email).toBe(propsEmployee.email.value)
         expect(output.role).toBe(propsEmployee.role)
         expect(output.position).toBe(propsEmployee.position)
         expect(output.photo).toBe(propsEmployee.photo)

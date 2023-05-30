@@ -22,8 +22,8 @@ describe('Test suits for Employeers entity', () => {
     employee.updatePhoto('updated.png');
     employee.updateRole('User');
     employee.updatePosition('Backend Developer');
-    expect(employee.name.name).toBe('Bento Siala Júlio');
-    expect(employee.email.email).toBe('ariannexux0101@gmail.com');
+    expect(employee.name.value).toBe('Bento Siala Júlio');
+    expect(employee.email.value).toBe('ariannexux0101@gmail.com');
     expect(employee.photo).toBe('updated.png');
     expect(employee.role).toBe('User');
     expect(employee.position).toBe('Backend Developer');

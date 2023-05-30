@@ -27,12 +27,12 @@ describe("Test suits for repository employee", () => {
 
         const employeeFound = await prisma.employee.findFirst({
             where: {
-                id: employeeProps.id.id
+                id: employeeProps.id.value
             }
         })
-        expect(employeeFound.id).toBe(employee.id.id)
-        expect(employeeFound.name).toBe(employee.name.name)
-        expect(employeeFound.email).toBe(employee.email.email)
+        expect(employeeFound.id).toBe(employee.id.value)
+        expect(employeeFound.name).toBe(employee.name.value)
+        expect(employeeFound.email).toBe(employee.email.value)
         expect(employeeFound.role).toBe(employee.role)
         expect(employeeFound.position).toBe(employee.position)
         expect(employeeFound.photo).toBe(employee.photo)
@@ -55,9 +55,9 @@ describe("Test suits for repository employee", () => {
 
         await prisma.employee.create({
             data: {
-                id: employeeToUpdate.id.id,
-                name: employeeToUpdate.name.name,
-                email: employeeToUpdate.email.email,
+                id: employeeToUpdate.id.value,
+                name: employeeToUpdate.name.value,
+                email: employeeToUpdate.email.value,
                 role: employeeToUpdate.role,
                 position: employeeToUpdate.position,
                 photo: employeeToUpdate.photo
@@ -71,12 +71,12 @@ describe("Test suits for repository employee", () => {
 
         const employeeFound = await prisma.employee.findFirst({
             where: {
-                id: employeeProps.id.id
+                id: employeeProps.id.value
             }
         })
-        expect(employeeFound.id).toBe(employeeToUpdate.id.id)
-        expect(employeeFound.name).toBe(employeeToUpdate.name.name)
-        expect(employeeFound.email).toBe(employeeToUpdate.email.email)
+        expect(employeeFound.id).toBe(employeeToUpdate.id.value)
+        expect(employeeFound.name).toBe(employeeToUpdate.name.value)
+        expect(employeeFound.email).toBe(employeeToUpdate.email.value)
         expect(employeeFound.role).toBe(employeeToUpdate.role)
         expect(employeeFound.position).toBe(employeeToUpdate.position)
         expect(employeeFound.photo).toBe(employeeToUpdate.photo)
@@ -101,20 +101,20 @@ describe("Test suits for repository employee", () => {
 
         await prisma.employee.create({
             data: {
-                id: employee.id.id,
-                name: employee.name.name,
-                email: employee.email.email,
+                id: employee.id.value,
+                name: employee.name.value,
+                email: employee.email.value,
                 role: employee.role,
                 position: employee.position,
                 photo: employee.photo
             }
         })
 
-        let employeeFound = await repository.find(employee.id.id)
+        let employeeFound = await repository.find(employee.id.value)
 
-        expect(employeeFound.id.id).toBe(employee.id.id)
-        expect(employeeFound.name.name).toBe(employee.name.name)
-        expect(employeeFound.email.email).toBe(employee.email.email)
+        expect(employeeFound.id.value).toBe(employee.id.value)
+        expect(employeeFound.name.value).toBe(employee.name.value)
+        expect(employeeFound.email.value).toBe(employee.email.value)
         expect(employeeFound.role).toBe(employee.role)
         expect(employeeFound.position).toBe(employee.position)
         expect(employeeFound.photo).toBe(employee.photo)
@@ -149,9 +149,9 @@ describe("Test suits for repository employee", () => {
 
         await prisma.employee.create({
             data: {
-                id: employee.id.id,
-                name: employee.name.name,
-                email: employee.email.email,
+                id: employee.id.value,
+                name: employee.name.value,
+                email: employee.email.value,
                 role: employee.role,
                 position: employee.position,
                 photo: employee.photo
@@ -160,9 +160,9 @@ describe("Test suits for repository employee", () => {
 
         await prisma.employee.create({
             data: {
-                id: employee2.id.id,
-                name: employee2.name.name,
-                email: employee2.email.email,
+                id: employee2.id.value,
+                name: employee2.name.value,
+                email: employee2.email.value,
                 role: employee2.role,
                 position: employee2.position,
                 photo: employee2.photo
@@ -196,20 +196,20 @@ describe("Test suits for repository employee", () => {
 
         await prisma.employee.create({
             data: {
-                id: employee.id.id,
-                name: employee.name.name,
-                email: employee.email.email,
+                id: employee.id.value,
+                name: employee.name.value,
+                email: employee.email.value,
                 role: employee.role,
                 position: employee.position,
                 photo: employee.photo
             }
         })
 
-        await repository.delete(employee.id.id)
+        await repository.delete(employee.id.value)
 
         let employeesDelete = await prisma.employee.findUnique({
             where: {
-                id: employee.id.id,
+                id: employee.id.value,
             },
             select: {
                 id: true

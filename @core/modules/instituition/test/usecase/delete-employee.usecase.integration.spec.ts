@@ -24,9 +24,9 @@ describe("Test suit to list Employee", () => {
 
         await prisma.employee.create({
             data: {
-                id: employee.id.id,
-                name: employee.name.name,
-                email: employee.email.email,
+                id: employee.id.value,
+                name: employee.name.value,
+                email: employee.email.value,
                 role: employee.role,
                 position: employee.position,
                 photo: employee.photo
@@ -37,12 +37,12 @@ describe("Test suit to list Employee", () => {
 
         const usecase = new DeleteEmployeeUseCase(repository);
         const input = {
-            id: employee.id.id
+            id: employee.id.value
         }
         await usecase.execute(input)
         const output = await prisma.employee.findUnique({
             where: {
-                id: employee.id.id
+                id: employee.id.value
             }
         })
 

@@ -36,7 +36,7 @@ describe("Test suit to list Employee", () => {
             list: jest.fn(),
             delete: jest.fn(async (id) => {
                 let index = data.findIndex((elem, index) => {
-                    if (elem.id.id == id) {
+                    if (elem.id.value == id) {
                         return index
                     }
                 });
@@ -50,13 +50,13 @@ describe("Test suit to list Employee", () => {
 
         const usecase = new DeleteEmployeeUseCase(repository);
         const input = {
-            id: employee2.id.id
+            id: employee2.id.value
         }
         await usecase.execute(input)
 
         expect(repository.delete).toHaveBeenCalled()
         expect(data.length).toBe(1)
-        expect(data[0].id.id).toBe(employee1.id.id);
+        expect(data[0].id.value).toBe(employee1.id.value);
         expect(data[1]).toBeUndefined();
     })
 })

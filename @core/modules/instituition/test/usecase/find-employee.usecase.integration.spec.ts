@@ -22,9 +22,9 @@ describe('Test suits Find Employee Use Case', () => {
         const employee = new Employee(propsEmployee)
         await prisma.employee.create({
             data: {
-                id: employee.id.id,
-                name: employee.name.name,
-                email: employee.email.email,
+                id: employee.id.value,
+                name: employee.name.value,
+                email: employee.email.value,
                 role: employee.role,
                 position: employee.position,
                 photo: employee.photo
@@ -33,14 +33,14 @@ describe('Test suits Find Employee Use Case', () => {
 
         const repository = new EmployeeRepository()
         const input = {
-            id: employee.id.id
+            id: employee.id.value
         }
         const usecase = new FindEmployeeUseCase(repository)
         const output = await usecase.execute(input)
 
         expect(output.id).toBeDefined()
-        expect(output.name).toBe(propsEmployee.name.name)
-        expect(output.email).toBe(propsEmployee.email.email)
+        expect(output.name).toBe(propsEmployee.name.value)
+        expect(output.email).toBe(propsEmployee.email.value)
         expect(output.role).toBe(propsEmployee.role)
         expect(output.position).toBe(propsEmployee.position)
         expect(output.photo).toBe(propsEmployee.photo)
