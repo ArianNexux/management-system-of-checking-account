@@ -19,9 +19,9 @@ export default class EmployeeRepository implements EmployeeGateway {
 
         await this.prisma.employee.create({
             data: {
-                id: entity.id.id,
-                name: entity.name.name,
-                email: entity.email.email,
+                id: entity.id.value,
+                name: entity.name.value,
+                email: entity.email.value,
                 role: entity.role,
                 position: entity.position,
                 photo: entity.photo
@@ -32,15 +32,15 @@ export default class EmployeeRepository implements EmployeeGateway {
     async update(entity: Employee): Promise<void> {
         await this.prisma.employee.update({
             data: {
-                id: entity.id.id,
-                name: entity.name.name,
-                email: entity.email.email,
+                id: entity.id.value,
+                name: entity.name.value,
+                email: entity.email.value,
                 role: entity.role,
                 position: entity.position,
                 photo: entity.photo
             },
             where: {
-                id: entity.id.id
+                id: entity.id.value
             }
         })
     }

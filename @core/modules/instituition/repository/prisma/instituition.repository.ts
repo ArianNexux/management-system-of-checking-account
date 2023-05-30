@@ -17,7 +17,7 @@ export default class InstituitionPrismaRepository implements InstituitionGateway
 
         await this.prisma.instituition.create({
             data: {
-                id: entity.id.id,
+                id: entity.id.value,
                 name: entity.name,
                 logo: entity.logo,
                 heightLogo: entity.sizeLogo.height.toString(),
@@ -39,7 +39,7 @@ export default class InstituitionPrismaRepository implements InstituitionGateway
                 title2: entity.title2
             },
             where: {
-                id: entity.id.id
+                id: entity.id.value
             }
         })
     }
