@@ -1,4 +1,3 @@
-import { TypeOfTransaction } from '../../@shared/domain/enums/type.transaction.enum';
 import BaseEntity from '../../@shared/domain/entity/base-entity';
 import Id from '../../@shared/domain/value-objects/id.vo';
 import Expenditure from './expenditure.entity';
@@ -8,25 +7,25 @@ import Supplier from './supplier.entity';
 type TransactionProps = {
     id: Id;
     expenditure: Expenditure;
-    type: TypeOfTransaction;
+    type: string;
     amount: number;
     balance_after: number;
     supplier: Supplier;
     reference: string;
     description: string;
     ticket: string;
-    date_of: Date
+    date_doc: Date
 };
 export default class Transaction extends BaseEntity {
     private _expenditure: Expenditure;
-    private _type: TypeOfTransaction;
+    private _type: string;
     private _amount: number;
     private _balance_after: number;
     private _supplier: Supplier;
     private _reference: string;
     private _description: string;
     private _ticket: string;
-    private _date_of: Date
+    private _date_doc: Date
 
     constructor(props: TransactionProps) {
         super(props.id);
@@ -36,7 +35,7 @@ export default class Transaction extends BaseEntity {
         this._balance_after = props.balance_after;
         this._supplier = props.supplier;
         this._reference = props.reference;
-        this._date_of = props.date_of;
+        this._date_doc = props.date_doc;
         this._description = props.description;
         this._ticket = props.ticket;
         this.validate();
@@ -62,12 +61,12 @@ export default class Transaction extends BaseEntity {
         return this._supplier;
     }
 
-    get ticket(): String {
+    get ticket(): string {
         return this._ticket;
     }
 
-    get date_of(): Date {
-        return this._date_of;
+    get date_doc(): Date {
+        return this._date_doc;
     }
 
     get reference(): string {
@@ -78,7 +77,7 @@ export default class Transaction extends BaseEntity {
         return this._description;
     }
 
-    changeType(type: TypeOfTransaction): void {
+    changeType(type: string): void {
         this._type = type;
     }
 
@@ -109,7 +108,7 @@ export default class Transaction extends BaseEntity {
         this._reference = ref;
     }
     updateDateOf(d: Date): void {
-        this._date_of = d;
+        this._date_doc = d;
     }
 
     validate() {
@@ -144,7 +143,7 @@ export default class Transaction extends BaseEntity {
             throw new Error('Please provide a valid Balance After');
         }
 
-        if (!this._date_of) {
+        if (!this._date_doc) {
             throw new Error('Please provide a valid Date');
         }
     }

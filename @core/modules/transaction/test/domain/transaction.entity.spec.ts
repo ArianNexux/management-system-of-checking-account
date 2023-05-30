@@ -35,7 +35,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "123",
       description: "Pagamento do Projecto 1",
       ticket: "comprovativo.pdf",
-      date_of: new Date()
+      date_doc: new Date()
     };
     const transaction = new Transaction(transactionProps);
 
@@ -66,7 +66,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "123",
       description: "Pagamento do Projecto 1",
       ticket: "comprovativo.pdf",
-      date_of: new Date()
+      date_doc: new Date()
     };
 
     expect(() => {
@@ -85,7 +85,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "123",
       description: "Pagamento do Projecto 1",
       ticket: "comprovativo.pdf",
-      date_of: new Date()
+      date_doc: new Date()
     };
 
     expect(() => {
@@ -104,7 +104,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "123",
       description: "Pagamento do Projecto 1",
       ticket: "comprovativo.pdf",
-      date_of: new Date()
+      date_doc: new Date()
     };
 
     expect(() => {
@@ -123,7 +123,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "123",
       description: "Pagamento do Projecto 1",
       ticket: "comprovativo.pdf",
-      date_of: new Date()
+      date_doc: new Date()
     };
 
     expect(() => {
@@ -142,7 +142,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "123",
       description: "Pagamento do Projecto 1",
       ticket: "comprovativo.pdf",
-      date_of: new Date()
+      date_doc: new Date()
     };
 
     expect(() => {
@@ -161,7 +161,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "",
       description: "Pagamento do Projecto 1",
       ticket: "comprovativo.pdf",
-      date_of: new Date()
+      date_doc: new Date()
     };
 
     expect(() => {
@@ -180,7 +180,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "123",
       description: "",
       ticket: "comprovativo.pdf",
-      date_of: new Date()
+      date_doc: new Date()
     };
 
     expect(() => {
@@ -199,7 +199,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "123",
       description: "description",
       ticket: "",
-      date_of: new Date()
+      date_doc: new Date()
     };
 
     expect(() => {
@@ -219,7 +219,7 @@ describe('Test suit for Transaction Entity', () => {
       reference: "123",
       description: "description",
       ticket: "comprovativo.pdf",
-      date_of: null
+      date_doc: null
     };
 
     expect(() => {
