@@ -33,11 +33,11 @@ export default class AddEmployeeUseCase {
 
 
         return {
-            id: employee.id.id,
-            name: employee.name.name,
+            id: employee.id.value,
+            name: employee.name.value,
             role: employee.role,
             position: employee.position,
-            email: employee.email.email,
+            email: employee.email.value,
             photo: employee.photo
 
         }

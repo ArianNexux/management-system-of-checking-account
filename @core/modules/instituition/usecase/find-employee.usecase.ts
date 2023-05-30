@@ -21,8 +21,8 @@ export default class FindEmployeeUseCase {
 
         return {
             id: input.id,
-            name: instituitionFound.name.name,
-            email: instituitionFound.email.email,
+            name: instituitionFound.name.value,
+            email: instituitionFound.email.value,
             photo: instituitionFound.photo,
             role: instituitionFound.role,
             position: instituitionFound.position,

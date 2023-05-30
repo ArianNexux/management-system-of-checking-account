@@ -21,9 +21,9 @@ export default class ListEmployeeUseCase {
         }
 
         let output: ListEmployee[] = result.map(e => ({
-            id: e.id.id,
-            name: e.name.name,
-            email: e.email.email,
+            id: e.id.value,
+            name: e.name.value,
+            email: e.email.value,
             position: e.position,
             role: e.role,
             photo: e.photo
