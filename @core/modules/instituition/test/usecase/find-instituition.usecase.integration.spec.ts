@@ -13,7 +13,7 @@ describe('Test suits Find Instituition Use Case', () => {
 
         const id = new Id()
         const inputToCreate = {
-            id: id.id,
+            id: id.value,
             name: 'bsj',
             title1: 't1',
             title2: 't2',

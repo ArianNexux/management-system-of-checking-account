@@ -13,7 +13,7 @@ describe("Test suit to update instituition", () => {
         const usecase = new UpdateInstituitionUseCase(repository);
         const id = new Id()
         const input = {
-            id: id.id,
+            id: id.value,
             name: 'bsj',
             title1: 't1',
             title2: 't2',
