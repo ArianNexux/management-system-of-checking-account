@@ -32,7 +32,7 @@ export default class AddEmployeeUseCase {
 
 
         return {
-            id: instituition.id.id,
+            id: instituition.id.value,
             name: instituition.name,
             title1: instituition.title1,
             title2: instituition.title2,
