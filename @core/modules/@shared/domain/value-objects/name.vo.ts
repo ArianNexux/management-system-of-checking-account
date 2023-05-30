@@ -1,13 +1,13 @@
 export default class Name {
-  private _name: string;
+  private _value: string;
   constructor(name: string) {
     if (!name || name.split(' ').length < 2) {
       throw new Error('Please provide a valid name');
     }
-    this._name = name;
+    this._value = name;
   }
 
-  get name() {
-    return this._name;
+  get value() {
+    return this._value;
   }
 }

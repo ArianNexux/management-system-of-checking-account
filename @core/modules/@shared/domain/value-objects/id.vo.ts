@@ -1,13 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export default class Id {
-  private _id: string;
+  private _value: string;
 
   constructor(id?: string) {
-    this._id = id || uuidv4();
+    this._value = id || uuidv4();
   }
 
-  get id(): string {
-    return this._id;
+  get value(): string {
+    return this._value;
   }
 }

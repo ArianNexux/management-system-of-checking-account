@@ -1,15 +1,15 @@
 export default class Email {
-  private _email: string;
+  private _value: string;
 
   constructor(email: string) {
     if (!email || !email.includes('@')) {
       throw new Error('Please provide a valid email address');
     }
 
-    this._email = email;
+    this._value = email;
   }
 
-  get email() {
-    return this._email;
+  get value() {
+    return this._value;
   }
 }
