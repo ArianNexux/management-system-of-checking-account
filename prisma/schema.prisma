@@ -43,3 +43,60 @@ model Employee {
 
   @@map("employees")
 }
+
+// Transação(despesa(quando for debito), tipo(credito, debito), amount, 
+//saldo apos o movimento, fornecedor, ref, data doc, comprovatico, descricao)
+
+model Expenditure {
+  id String @id @unique
+
+  name String
+  type String
+
+  Transaction Transaction[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@map("expenditures")
+}
+
+model Transaction {
+  id String @id @unique
+
+  expenditure   Expenditure @relation(fields: [expenditureId], references: [id])
+  expenditureId String
+
+  type          String
+  amount        Float
+  balance_after Float
+  reference     String
+  ticket        String
+  date_doc      DateTime
+  description   String
+
+  supplier   Supplier @relation(fields: [supplierId], references: [id])
+  supplierId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("transactions")
+}
+
+model Supplier {
+  id              String        @id @unique
+  name            String
+  supplier_nature String
+  nif             String
+  email           String        @unique
+  telephone       String
+  manager         String
+  address         String
+  code            String
+  Transaction     Transaction[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("suppliers")
+}
