@@ -4,7 +4,7 @@ import Instituition from "../domain/instituition.entity";
 import InstituitionGateway from "../gateway/instituition.gateway";
 import { AddInstituitionInputDTO, AddInstituitionOutputDTO } from "../../@shared/dtos/add-instituition.dto";
 
-export default class AddEmployeeUseCase {
+export default class AddInstituitionUseCase {
 
     constructor(
         private repository: InstituitionGateway
