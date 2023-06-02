@@ -1,11 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import EmployeeRepository from "../../repository/prisma/employee.repository"
 import UpdateEmployeeUseCase from "../../usecase/update-employee.usecase"
-import Email from "@core/modules/@shared/domain/value-objects/email.vo"
-import Id from "@core/modules/@shared/domain/value-objects/id.vo"
-import Name from "@core/modules/@shared/domain/value-objects/name.vo"
 import { faker } from "@faker-js/faker"
-import Employee from "../../domain/employee.entity"
 
 describe("Test suit to update Employee", () => {
 
