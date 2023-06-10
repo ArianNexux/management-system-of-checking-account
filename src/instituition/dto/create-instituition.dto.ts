@@ -1,0 +1,8 @@
+export class CreateInstituitionDto {
+    name: string
+    title1: string
+    title2: string
+    logo: string
+    heightLogo: number
+    widthLogo: number
+}
