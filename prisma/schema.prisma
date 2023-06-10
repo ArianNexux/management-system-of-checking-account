@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["debian-openssl-3.0.x", "native"]
 }
 
 datasource db {
@@ -24,6 +25,8 @@ model Instituition {
   heightLogo String
 
   widthLogo String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@map("instituition")
 }
@@ -33,13 +36,17 @@ model Employee {
 
   email String @unique
 
+  password String @default("secret")
+
   name String
 
   photo String
 
   role String
 
-  position String
+  position  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@map("employees")
 }
@@ -63,7 +70,7 @@ model Expenditure {
 model Transaction {
   id String @id @unique
 
-  expenditure   Expenditure @relation(fields: [expenditureId], references: [id])
+  expenditure   Expenditure @relation(fields: [expenditureId], references: [id], onUpdate: NoAction, onDelete: NoAction)
   expenditureId String
 
   type          String
@@ -74,7 +81,7 @@ model Transaction {
   date_doc      DateTime
   description   String
 
-  supplier   Supplier @relation(fields: [supplierId], references: [id])
+  supplier   Supplier @relation(fields: [supplierId], references: [id], onUpdate: NoAction, onDelete: NoAction)
   supplierId String
 
   createdAt DateTime @default(now())
