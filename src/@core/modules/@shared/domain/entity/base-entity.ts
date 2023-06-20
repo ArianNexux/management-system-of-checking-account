@@ -2,8 +2,8 @@ import Id from '../value-objects/id.vo';
 
 export default class BaseEntity {
   private _id: Id;
-  private _created_at: Date;
-  private _updated_at: Date;
+  protected _created_at: Date;
+  protected _updated_at: Date;
 
   constructor(id: Id) {
     this._id = id;
@@ -20,4 +20,5 @@ export default class BaseEntity {
   get updatedAt(): Date {
     return this._updated_at;
   }
+
 }

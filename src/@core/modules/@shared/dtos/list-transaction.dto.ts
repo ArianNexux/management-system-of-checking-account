@@ -22,9 +22,13 @@ type ListTransaction = {
     description: string;
     ticket: string;
     date_doc: Date
+    createdAt: Date;
+    updatedAt: Date;
 }
 type ListTransactionInputDTO = {
     page: number
     limit: number
     supplierId?: string
+    beginDate?: string
+    endDate?: string
 }

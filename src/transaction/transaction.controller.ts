@@ -48,15 +48,17 @@ export class TransactionController {
   async findBySupplier(
     @Query('limit', ParseIntPipe) limit: number,
     @Query('page', ParseIntPipe) page: number,
+    @Query('beginDate') beginDate: string,
+    @Query('endDate') endDate: string,
     @Param('supplierId') supplierId: string,
     @Req() req: Request,
     @Res() res: Response
   ) {
     try {
-      const response = await this.transactionService.findBySupplier({ limit, page, supplierId });
+      console.log(beginDate, supplierId, endDate)
+      const response = await this.transactionService.findBySupplier({ limit, page, supplierId: supplierId.toString(), beginDate: beginDate.toString(), endDate: endDate.toString() });
       return res.status(200).json({
         data: response
-
       })
     } catch (err) {
       return res.status(400).json({

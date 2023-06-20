@@ -18,15 +18,15 @@ export default class TransactionRepository implements TransactionGateway {
             throw new Error("Please provide an entity")
         }
 
-
+        console.log(entity.amount, entity.balance_after)
 
         await this.prisma.transaction.create({
             data: {
                 id: entity.id.value,
                 expenditureId: entity.expenditure.id.value,
                 type: entity.type,
-                amount: Number(entity.amount),
-                balance_after: Number(entity.balance_after),
+                amount: entity.amount.toString(),
+                balance_after: entity.balance_after.toString(),
                 supplierId: entity.supplier.id.value,
                 reference: entity.reference,
                 description: entity.description,
@@ -42,8 +42,8 @@ export default class TransactionRepository implements TransactionGateway {
                 id: entity.id.value,
                 expenditureId: entity.expenditure.id.value,
                 type: entity.type,
-                amount: entity.amount,
-                balance_after: entity.balance_after,
+                amount: entity.amount.toString(),
+                balance_after: entity.balance_after.toString(),
                 supplierId: entity.supplier.id.value,
                 reference: entity.reference,
                 description: entity.description,
@@ -84,8 +84,8 @@ export default class TransactionRepository implements TransactionGateway {
         let transactionProps = {
             id: new Id(response.id),
             type: response.type,
-            amount: response.amount,
-            balance_after: response.balance_after,
+            amount: Number(response.amount),
+            balance_after: Number(response.balance_after),
             reference: response.reference,
             description: response.description,
             ticket: response.ticket,
@@ -102,10 +102,22 @@ export default class TransactionRepository implements TransactionGateway {
         return transaction
     }
 
-    async listBySupplier(input: { limit: number; page: number; supplierId: string }): Promise<Transaction[]> {
+    async listBySupplier(input: { limit: number; page: number; supplierId: string, beginDate?: string, endDate?: string }): Promise<Transaction[]> {
+        let filterByDate = {}
+        if (input.beginDate) {
+            filterByDate = {
+                createdAt: {
+
+                    lte: new Date(input.endDate).toISOString(),
+                    gte: new Date(input.beginDate).toISOString(),
+
+                }
+            }
+        }
         const response = await this.prisma.transaction.findMany({
             where: {
-                supplierId: input.supplierId
+                supplierId: input.supplierId,
+                ...filterByDate
             },
             take: input.limit,
             include: {
@@ -116,7 +128,6 @@ export default class TransactionRepository implements TransactionGateway {
                 createdAt: 'desc'
             }
         })
-
         const output: Transaction[] = response.map((elem) => {
 
             const supplier = new Supplier({
@@ -128,7 +139,7 @@ export default class TransactionRepository implements TransactionGateway {
                 manager: elem.supplier.manager,
                 nif: elem.supplier.nif,
                 supplier_nature: elem.supplier.supplier_nature,
-                telephone: elem.supplier.telephone
+                telephone: elem.supplier.telephone,
             })
 
             const expenditure = new Expenditure({
@@ -140,14 +151,16 @@ export default class TransactionRepository implements TransactionGateway {
             let transactionProps = {
                 id: new Id(elem.id),
                 type: elem.type,
-                amount: elem.amount,
-                balance_after: elem.balance_after,
+                amount: Number(elem.amount),
+                balance_after: Number(elem.balance_after),
                 reference: elem.reference,
                 description: elem.description,
                 ticket: elem.ticket,
                 date_doc: new Date(elem.date_doc),
                 supplier,
                 expenditure,
+                createdAt: new Date(elem.createdAt),
+                updatedAt: new Date(elem.updatedAt)
 
             }
 
@@ -157,8 +170,18 @@ export default class TransactionRepository implements TransactionGateway {
         return output
     }
 
-    async list(input: { limit: number; page: number; }): Promise<Transaction[]> {
+    async list(input: { limit: number; page: number; beginDate?: string, endDate?: string }): Promise<Transaction[]> {
+        let filterByDate = {}
+        if (input.beginDate) {
+            filterByDate = {
+                createdAt: {
+                    lte: new Date(input.beginDate),
+                    gte: new Date(input.endDate)
+                }
+            }
+        }
         const response = await this.prisma.transaction.findMany({
+            where: filterByDate,
             take: input.limit,
             include: {
                 expenditure: true,
@@ -189,14 +212,16 @@ export default class TransactionRepository implements TransactionGateway {
             let transactionProps = {
                 id: new Id(elem.id),
                 type: elem.type,
-                amount: elem.amount,
-                balance_after: elem.balance_after,
+                amount: Number(elem.amount),
+                balance_after: Number(elem.balance_after),
                 reference: elem.reference,
                 description: elem.description,
                 ticket: elem.ticket,
                 date_doc: new Date(elem.date_doc),
                 supplier,
                 expenditure,
+                createdAt: new Date(elem.createdAt),
+                updatedAt: new Date(elem.updatedAt)
 
             }
 
@@ -219,7 +244,7 @@ export default class TransactionRepository implements TransactionGateway {
             }
         })
 
-        return response?.balance_after
+        return Number(response?.balance_after)
 
     }
 

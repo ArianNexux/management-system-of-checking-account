@@ -11,7 +11,6 @@ export default class ListTransactionUseCase {
     async execute(input: ListTransactionInputDTO): Promise<ListTransactionOutputDTO> {
 
         let result;
-        console.log("SUPPLIER ID:", input.supplierId)
         if (input.supplierId)
             result = await this.repository.listBySupplier(input)
         else
@@ -40,7 +39,9 @@ export default class ListTransactionUseCase {
             reference: e.reference,
             description: e.description,
             ticket: e.ticket,
-            date_doc: e.date_doc
+            date_doc: e.date_doc,
+            createdAt: e.createdAt,
+            updatedAt: e.updatedAt
         }))
 
         return {

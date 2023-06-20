@@ -14,7 +14,9 @@ type TransactionProps = {
     reference: string;
     description: string;
     ticket: string;
-    date_doc: Date
+    date_doc: Date,
+    createdAt?: Date,
+    updatedAt?: Date
 };
 export default class Transaction extends BaseEntity {
     private _expenditure: Expenditure;
@@ -38,6 +40,9 @@ export default class Transaction extends BaseEntity {
         this._date_doc = props.date_doc;
         this._description = props.description;
         this._ticket = props.ticket;
+        this._ticket = props.ticket;
+        this._created_at = props.createdAt;
+        this._updated_at = props.createdAt;
         this.validate();
     }
 

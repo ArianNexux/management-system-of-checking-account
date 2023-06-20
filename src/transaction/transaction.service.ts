@@ -26,7 +26,7 @@ export class TransactionService {
     return this.listTransaction.execute({ ...input });
   }
 
-  findBySupplier(input: { limit: number, page: number, supplierId: string }) {
+  findBySupplier(input: { limit: number, page: number, supplierId: string, beginDate: string, endDate: string }) {
     return this.listTransaction.execute({ ...input });
   }
   findOne(id: string) {
