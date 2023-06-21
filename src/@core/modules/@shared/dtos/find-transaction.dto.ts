@@ -6,8 +6,8 @@ export type FindTransactionOutputDTO = {
         }
     };
     type: string;
-    amount: number;
-    balance_after: number;
+    amount: string;
+    balance_after: string;
     supplier: {
         id: {
             value: string
