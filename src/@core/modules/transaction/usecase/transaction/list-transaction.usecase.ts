@@ -29,8 +29,8 @@ export default class ListTransactionUseCase {
 
             },
             type: e.type,
-            amount: e.amount,
-            balance_after: e.balance_after,
+            amount: e.amount.toLocaleString(),
+            balance_after: e.balance_after.toLocaleString(),
             supplier: {
                 id: e.supplier.id.value,
                 name: e.supplier.name.value,
