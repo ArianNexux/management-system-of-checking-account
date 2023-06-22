@@ -12,8 +12,8 @@ type ListTransaction = {
         type: string
     };
     type: string;
-    amount: string;
-    balance_after: string;
+    amount: number;
+    balance_after: number;
     supplier: {
         id: string,
         name: string,

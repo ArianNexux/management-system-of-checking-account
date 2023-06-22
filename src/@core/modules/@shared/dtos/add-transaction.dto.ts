@@ -18,8 +18,8 @@ export type AddTransactionOutputDTO = {
         }
     };
     type: string;
-    amount: string;
-    balance_after: string;
+    amount: number;
+    balance_after: number;
     supplier: {
         id: {
             value: string

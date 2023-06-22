@@ -244,8 +244,8 @@ export default class TransactionRepository implements TransactionGateway {
             }
         })
 
-        return Number(response?.balance_after)
 
+        return parseInt(response?.balance_after)
     }
 
     async delete(id: string): Promise<void> {

@@ -36,7 +36,6 @@ export class TransactionController {
       const response = await this.transactionService.findAll({ limit, page });
       return res.status(200).json({
         data: response
-
       })
     } catch (err) {
       return res.status(400).json({

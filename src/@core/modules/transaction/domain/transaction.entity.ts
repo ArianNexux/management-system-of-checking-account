@@ -117,10 +117,6 @@ export default class Transaction extends BaseEntity {
     }
 
     validate() {
-        if (this._amount <= 0) {
-            throw new Error('Please provide a valid amount');
-        }
-
         if (!this._supplier) {
             throw new Error('Please provide a supplier');
         }
