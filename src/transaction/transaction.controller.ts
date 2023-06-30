@@ -54,7 +54,6 @@ export class TransactionController {
     @Res() res: Response
   ) {
     try {
-      console.log(beginDate, supplierId, endDate)
       const response = await this.transactionService.findBySupplier({ limit, page, supplierId: supplierId.toString(), beginDate: beginDate.toString(), endDate: endDate.toString() });
       return res.status(200).json({
         data: response
@@ -97,7 +96,6 @@ export class TransactionController {
         data: response
       })
     } catch (err) {
-      console.log(err)
       return res.status(400).json({
         message: err.toString()
       })

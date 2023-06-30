@@ -17,16 +17,13 @@ export default class TransactionRepository implements TransactionGateway {
         if (!entity) {
             throw new Error("Please provide an entity")
         }
-
-        console.log(entity.amount, entity.balance_after)
-
         await this.prisma.transaction.create({
             data: {
                 id: entity.id.value,
                 expenditureId: entity.expenditure.id.value,
                 type: entity.type,
-                amount: entity.amount.toString(),
-                balance_after: entity.balance_after.toString(),
+                amount: Number(entity.amount),
+                balance_after: Number(entity.balance_after),
                 supplierId: entity.supplier.id.value,
                 reference: entity.reference,
                 description: entity.description,
@@ -42,8 +39,8 @@ export default class TransactionRepository implements TransactionGateway {
                 id: entity.id.value,
                 expenditureId: entity.expenditure.id.value,
                 type: entity.type,
-                amount: entity.amount.toString(),
-                balance_after: entity.balance_after.toString(),
+                amount: Number(entity.amount),
+                balance_after: Number(entity.balance_after),
                 supplierId: entity.supplier.id.value,
                 reference: entity.reference,
                 description: entity.description,
@@ -245,8 +242,9 @@ export default class TransactionRepository implements TransactionGateway {
         })
 
 
-        return parseInt(response?.balance_after)
+        return response?.balance_after
     }
+
 
     async delete(id: string): Promise<void> {
 

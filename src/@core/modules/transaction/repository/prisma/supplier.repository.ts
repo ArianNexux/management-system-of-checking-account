@@ -50,7 +50,6 @@ export default class SupplierRepository implements SupplierGateway {
             }
         })
 
-        console.log(response)
     }
     async find(id: string): Promise<Supplier> {
         const response = await this.prisma.supplier.findFirst({

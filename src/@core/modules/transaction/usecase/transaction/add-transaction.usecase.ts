@@ -24,8 +24,9 @@ export default class AddTransactionUseCase {
 
         const dataExpenditure = await this.expenditure_repository.find(input.expenditureId)
         const balanceAfterLastTransaction = await this.repository.findBalanceAfterOfLastTransaction(input.supplierId)
-        const balanceAfter = input.type == "Debit" ? balanceAfterLastTransaction + input.amount : balanceAfterLastTransaction - input.amount
-
+        const balanceAfter = input.type == "Debit" ? Number(balanceAfterLastTransaction) + Number(input.amount) : Number(balanceAfterLastTransaction) - Number(input.amount)
+        console.log(balanceAfter)
+        console.log(balanceAfterLastTransaction)
         const propsTransaction = {
             id: new Id(),
             expenditure: dataExpenditure,

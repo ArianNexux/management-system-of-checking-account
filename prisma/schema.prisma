@@ -74,8 +74,8 @@ model Transaction {
   expenditureId String
 
   type          String
-  amount        String
-  balance_after String
+  amount        Float
+  balance_after Float
   reference     String
   ticket        String
   date_doc      DateTime
