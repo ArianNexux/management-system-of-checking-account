@@ -30,6 +30,9 @@ export default class EmployeeRepository implements EmployeeGateway {
         })
 
     }
+    async count(): Promise<number> {
+        return await this.prisma.employee.count()
+    }
     async update(entity: Employee): Promise<void> {
         await this.prisma.employee.update({
             data: {

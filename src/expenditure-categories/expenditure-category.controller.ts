@@ -1,20 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Req, Res, ParseIntPipe } from '@nestjs/common';
-import { ExpenditureService } from './expenditure.service';
-import { CreateExpenditureDto } from './dto/create-expenditure.dto';
-import { UpdateExpenditureDto } from './dto/update-expenditure.dto';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Req, Res } from '@nestjs/common';
+import { CreateExpenditureCategoryDto } from './dto/create-expenditure-category.dto';
 import { Request, Response } from 'express';
-@Controller('expenditure')
-export class ExpenditureController {
-  constructor(private readonly expenditureService: ExpenditureService) { }
+import { ExpenditureCategoryService } from './expenditure-category.service';
+import { UpdateExpenditureCategoryDto } from './dto/update-expenditure-category.dto';
+@Controller('expenditure-category')
+export class ExpenditureCategoryController {
+  constructor(private readonly expenditureCategoryService: ExpenditureCategoryService) { }
 
   @Post()
   async create(
-    @Body() createExpenditureDto: CreateExpenditureDto,
+    @Body() createExpenditureDto: CreateExpenditureCategoryDto,
     @Req() req: Request,
     @Res() res: Response
   ) {
     try {
-      const response = await this.expenditureService.create(createExpenditureDto);
+      const response = await this.expenditureCategoryService.create(createExpenditureDto);
       return res.status(200).json({
         data: response
       })
@@ -27,15 +27,13 @@ export class ExpenditureController {
 
   @Get()
   async findAll(
-    @Query('page', ParseIntPipe) page: number,
-    @Query('limit', ParseIntPipe) limit: number,
-    @Query() typeOfExpenditure: string,
+    @Query() limit: number,
+    @Query() page: number,
     @Req() req: Request,
     @Res() res: Response
   ) {
     try {
-
-      const response = await this.expenditureService.findAll({ limit, page, typeOfExpenditure });
+      const response = await this.expenditureCategoryService.findAll({ limit, page });
       return res.status(200).json({
         data: response
       })
@@ -52,7 +50,7 @@ export class ExpenditureController {
     @Res() res: Response
   ) {
     try {
-      const response = await this.expenditureService.findOne(id);
+      const response = await this.expenditureCategoryService.findOne(id);
       return res.status(200).json({
         data: response
       })
@@ -66,12 +64,12 @@ export class ExpenditureController {
   @Patch(':id')
   async update(
     @Param('id') id: string,
-    @Body() updateExpenditureDto: UpdateExpenditureDto,
+    @Body() updateExpenditureDto: UpdateExpenditureCategoryDto,
     @Req() req: Request,
     @Res() res: Response
   ) {
     try {
-      const response = await this.expenditureService.update(id, updateExpenditureDto);
+      const response = await this.expenditureCategoryService.update(id, updateExpenditureDto);
       return res.status(200).json({
         data: response
       })
@@ -89,7 +87,7 @@ export class ExpenditureController {
     @Res() res: Response
   ) {
     try {
-      const response = await this.expenditureService.remove(id);
+      const response = await this.expenditureCategoryService.remove(id);
       return res.status(200).json({
         data: response
       })

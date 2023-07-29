@@ -10,4 +10,6 @@ export default interface EmployeeGateway {
     find(id: string): Promise<Employee>;
     delete(id: string): Promise<void>;
     list(input: ListEmployeeInputDTO): Promise<Employee[]>;
+    count(): Promise<number>;
+
 }

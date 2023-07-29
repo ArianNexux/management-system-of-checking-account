@@ -54,18 +54,41 @@ export default class ExpenditureRepository implements ExpenditureGateway {
         return expenditure
     }
 
-    async list(input: { limit: number; page: number; }): Promise<Expenditure[]> {
-        const response = await this.prisma.expenditure.findMany({
-            orderBy: {
-                createdAt: 'desc'
-            }
-        })
+    async count(): Promise<number> {
+        const response = await this.prisma.expenditure.count()
+
+        return response
+    }
+    async list(input: { limit: number; page: number; typeOfExpenditure?: string }): Promise<Expenditure[]> {
+        let response
+        if (input.typeOfExpenditure) {
+            response = await this.prisma.expenditure.findMany({
+                orderBy: {
+                    createdAt: 'desc'
+                },
+                include: {
+                    expenditureCategory: true
+                },
+                where: {
+                    type: input.typeOfExpenditure
+                },
+            })
+        } else {
+            response = await this.prisma.expenditure.findMany({
+                orderBy: {
+                    createdAt: 'desc'
+                }, include: {
+                    expenditureCategory: true
+                }
+            })
+        }
+
 
         const output: Expenditure[] = response.map((elem) => {
             let expenditureProps = {
                 id: new Id(elem.id),
                 name: elem.name,
-                type: elem.type
+                type: elem.expenditureCategory.name
 
             }
 

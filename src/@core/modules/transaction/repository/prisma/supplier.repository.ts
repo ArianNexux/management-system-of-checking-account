@@ -32,6 +32,11 @@ export default class SupplierRepository implements SupplierGateway {
         })
 
     }
+    async count(): Promise<number> {
+        const response = await this.prisma.supplier.count()
+
+        return response
+    }
     async update(entity: Supplier): Promise<void> {
         const response = await this.prisma.supplier.update({
             data: {

@@ -10,4 +10,5 @@ export default interface ExpenditureGateway {
     find(id: string): Promise<Expenditure>;
     delete(id: string): Promise<void>;
     list(input: ListExpenditureInputDTO): Promise<Expenditure[]>;
+    count(): Promise<any>;
 }

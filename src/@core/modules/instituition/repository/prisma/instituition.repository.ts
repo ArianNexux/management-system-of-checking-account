@@ -28,6 +28,9 @@ export default class InstituitionPrismaRepository implements InstituitionGateway
         })
 
     }
+    async count(): Promise<number> {
+        return await this.prisma.instituition.count()
+    }
     async update(entity: Instituition): Promise<void> {
         await this.prisma.instituition.update({
             data: {

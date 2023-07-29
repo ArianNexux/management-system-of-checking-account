@@ -1,14 +1,14 @@
-import ExpenditureGateway from "../../gateway/expenditure.gateway";
+import ExpenditureCategoryGateway from "../../gateway/expenditure-category.gateway";
 
 export default class ListExpenditureUseCase {
     constructor(
-        private repository: ExpenditureGateway
+        private repository: ExpenditureCategoryGateway
     ) {
 
     }
 
 
-    async execute(input: ListExpenditureInputDTO): Promise<ListExpenditureOutputDTO> {
+    async execute(input: ListExpenditureCategoryInputDTO): Promise<ListExpenditureCategoryOutputDTO> {
 
         let result = await this.repository.list(input)
 
@@ -16,10 +16,9 @@ export default class ListExpenditureUseCase {
             throw new Error("No result found for expenditures")
         }
 
-        let output: ListExpenditure[] = result.map(e => ({
+        let output: ListExpenditureCategory[] = result.map(e => ({
             id: e.id.value,
             name: e.name,
-            typeOfExpenditure: e.type,
         }))
 
         return {

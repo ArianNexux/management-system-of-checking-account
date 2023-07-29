@@ -1,20 +1,35 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Req, Res, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Req, Res, ParseIntPipe, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { TransactionService } from './transaction.service';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { UpdateTransactionDto } from './dto/update-transaction.dto';
 import { Response, Request } from 'express'
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
 @Controller('transaction')
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) { }
 
   @Post()
+  @UseInterceptors(FileInterceptor("ticket", {
+    storage: diskStorage({
+      destination: "./public",
+      filename: (req, file, cb) => {
+        cb(null, Date.now() + file.originalname);
+      }
+    })
+  })
+  )
   async create(
     @Body() createTransactionDto: CreateTransactionDto,
     @Req() req: Request,
-    @Res() res: Response
+    @Res() res: Response,
+    @UploadedFile() file: Express.Multer.File
   ) {
     try {
-      const response = await this.transactionService.create(createTransactionDto);
+      const response = await this.transactionService.create({
+        ...createTransactionDto,
+        ticket: file.filename
+      });
       return res.status(200).json({
         data: response
       })

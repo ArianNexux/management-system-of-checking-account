@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["debian-openssl-3.0.x", "native"]
@@ -12,38 +9,26 @@ datasource db {
 }
 
 model Instituition {
-  id String @id @unique
-
-  name String
-
-  logo String
-
-  title1 String
-
-  title2 String
-
+  id         String   @id @unique
+  name       String
+  logo       String
+  title1     String
+  title2     String
   heightLogo String
-
-  widthLogo String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  widthLogo  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("instituition")
 }
 
 model Employee {
-  id String @id @unique
-
-  email String @unique
-
-  password String @default("secret")
-
-  name String
-
-  photo String
-
-  role String
-
+  id        String   @id @unique
+  email     String   @unique
+  password  String   @default("secret")
+  name      String
+  photo     String
+  role      String
   position  String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -51,28 +36,31 @@ model Employee {
   @@map("employees")
 }
 
-// Transação(despesa(quando for debito), tipo(credito, debito), amount, 
-//saldo apos o movimento, fornecedor, ref, data doc, comprovatico, descricao)
-
 model Expenditure {
-  id String @id @unique
-
-  name String
-  type String
-
-  Transaction Transaction[]
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  id                  String              @id @unique
+  name                String
+  type                String
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  expenditureCategory ExpenditureCategory @relation(fields: [type], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Transaction         Transaction[]
 
   @@map("expenditures")
 }
 
+model ExpenditureCategory {
+  id          String        @id @unique
+  name        String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  Expenditure Expenditure[]
+
+  @@map("expenditure_category")
+}
+
 model Transaction {
-  id String @id @unique
-
-  expenditure   Expenditure @relation(fields: [expenditureId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+  id            String      @id @unique
   expenditureId String
-
   type          String
   amount        Float
   balance_after Float
@@ -80,12 +68,11 @@ model Transaction {
   ticket        String
   date_doc      DateTime
   description   String
-
-  supplier   Supplier @relation(fields: [supplierId], references: [id], onUpdate: NoAction, onDelete: NoAction)
-  supplierId String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  supplierId    String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  supplier      Supplier    @relation(fields: [supplierId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  expenditure   Expenditure @relation(fields: [expenditureId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@map("transactions")
 }
@@ -100,10 +87,9 @@ model Supplier {
   manager         String
   address         String
   code            String
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
   Transaction     Transaction[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 
   @@map("suppliers")
 }

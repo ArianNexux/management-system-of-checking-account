@@ -22,9 +22,9 @@ export class ExpenditureService {
     return this.addExpenditure.execute(createExpenditureDto)
   }
 
-  findAll(input: { limit: number, page: number }) {
-
-    return this.listExpenditure.execute({ ...input });
+  findAll(input: { limit: number, page: number, typeOfExpenditure: any }) {
+    console.log(input.typeOfExpenditure)
+    return this.listExpenditure.execute({ ...input.typeOfExpenditure });
   }
 
   findOne(id: string) {

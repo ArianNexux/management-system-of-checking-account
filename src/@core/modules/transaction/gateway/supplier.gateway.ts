@@ -10,4 +10,6 @@ export default interface SupplierGateway {
     find(id: string): Promise<Supplier>;
     delete(id: string): Promise<void>;
     list(input: ListSupplierInputDTO): Promise<Supplier[]>;
+    count(): Promise<any>;
+
 }

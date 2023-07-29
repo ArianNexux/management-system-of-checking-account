@@ -7,6 +7,8 @@ export default interface TransactionGateway {
     list(input: ListTransactionInputDTO): Promise<Transaction[]>;
     listBySupplier(input: ListTransactionInputDTO): Promise<Transaction[]>;
     findBalanceAfterOfLastTransaction(supplierId: string): Promise<number>
+    count(): Promise<any>;
+
 }
 
 type ListTransactionInputDTO = {

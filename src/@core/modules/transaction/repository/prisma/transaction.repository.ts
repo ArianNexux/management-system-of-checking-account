@@ -33,6 +33,30 @@ export default class TransactionRepository implements TransactionGateway {
         })
 
     }
+    async count(): Promise<any> {
+        const response = await this.prisma.transaction.groupBy({
+            by: ['type'],
+            _sum: {
+                amount: true
+            }
+        })
+
+        const responseBalance = await this.prisma.transaction.findFirst({
+            orderBy: {
+                createdAt: "desc"
+            },
+            select: {
+                balance_after: true
+            }
+        })
+
+        return {
+            balance: responseBalance.balance_after,
+            credit: response[0]._sum.amount,
+            debit: response[1]._sum.amount
+        }
+
+    }
     async update(entity: Transaction): Promise<void> {
         await this.prisma.transaction.update({
             data: {
